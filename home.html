@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome to my website</title>
+    <style>
+        body {
+            padding-top: 100px;
+            background-color: pink;
+            color: black;
+            display: flex;
+            align-items: center; /* Keskittää sisällön pystysuunnassa */
+            justify-content: center; /* Keskittää sisällön vaakasuunnassa */
+            flex-direction: column;
+            margin: 0;
+            height: 100vh;
+        }
+        .container {
+            display: flex; /* Asettaa sisällön rinnakkain */
+            flex-direction: row; /* Riviasettelu */
+            align-items: flex-start; /* Kohdistaa sisällön yläreunaan */
+        }
+        .content {
+            display: flex;
+            flex-direction: column; /* Pystysuuntainen asettelu tekstille */
+            align-items: center;
+        }
+        .right-image {
+            width: 300px; /*Jorgen kuvan koko*/
+            height: auto; /* Säilyttää kuvasuhteen */
+            margin-left: 8px; /*väli Jorgen kuvan ja tekstin välillä*/
+        }
+        figure {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        figcaption {
+            margin-bottom: 10px; /* Väli kuvatekstin ja kuvan välillä */
+            font-size: 2.0rem;
+            color: black;
+            text-align: center;
+        }
+        h1, p {
+            text-align: center;
+            white-space: pre-line;
+        }
+        p {
+            width: 20%;
+        }
+        img {
+            max-width: 50%;
+            height: auto;
+            margin: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+    <h1>ALL<br>GOOD<br>THINGS<br>COME<br>TO<br>AN<br>END</h1>
+
+    <img src="final_A.PNG">
+
+        <p>Hello,</p>
+        <p> 
+        I'm a site manager in PSA Sines container terminal.
+        My passion is red wine and bad jokes. Nurik makes me angry.
+        </p>
+
+        <p>
+        I am moving to Barcelona even though I miss my girlfriend a lot. 
+        This is new year new me. I have set at least one goal to me for this year:
+            I'm going to learn LiSA system and PLC programming.
+        </p>
+    </div>
+    <figure>
+    <img src="jorge_basic.png" alt="FINAL BOSS" class="right-image">
+    <figcaption>THE FINAL BOSS</figcaption>
+    </div>
+
+</body>
+
+</html>

@@ -1,82 +1,331 @@
 <!DOCTYPE html>
-<html>
+<html lang="fi">
 <head>
-    <title>Welcome to my website</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>FINAL BOSS JORGE</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            padding-top: 100px;
             background-color: pink;
             color: black;
             display: flex;
-            align-items: center; /* Keskittää sisällön pystysuunnassa */
             justify-content: center; /* Keskittää sisällön vaakasuunnassa */
-            flex-direction: column;
-            margin: 0;
-            height: 100vh;
+            align-items: center; /* Keskittää sisällön pystysuunnassa */
+            /*height: 100vh;*/
+            padding: 20px;
+            padding-bottom: 200px;
         }
-        .container {
-            display: flex; /* Asettaa sisällön rinnakkain */
-            flex-direction: row; /* Riviasettelu */
-            align-items: flex-start; /* Kohdistaa sisällön yläreunaan */
+
+        html {
+            height: auto;
+            overflow: auto;
+        }
+
+        /*PIILOTETTAVAT ELEMENTIT*/
+        .hidden {
+            display: none !important;
+        }
+        
+        /*ANIMAATIOT*/
+        @keyframes moveAndRotate1 {
+            /*vasen yläkulma*/
+            0% {top: 10%;
+                left: 10%; /*left: -300px; /* Kuva alkaa vasemmalta ulkopuolelta */
+                transform: translate(0, 0) rotate(0deg);/*transform: rotate(0deg); /*ei pyöri alussa*/}
+            25% {transform: translate(300x, 0) rotate(90deg);}
+            50% {transform: translate(300px, 300px) rotate(180deg);}
+            75% {transform: translate(0, 300px) rotate(270deg);}
+            100% {transform: translate(300px, 0) rotate(360deg);}
+            
+        }
+        @keyframes moveAndRotate2 {
+            /*vasen alakulma*/
+            0% {top: 70%;
+                left: 10%; /*left: -300px; /* Kuva alkaa vasemmalta ulkopuolelta */
+                transform: translate(0, 0) rotate(0deg);/*transform: rotate(0deg); /*ei pyöri alussa*/}
+            25% {transform: translate(-300px, 0) rotate(-90deg);}
+            50% {transform: translate(-300px, -300px) rotate(-180deg);}
+            75% {transform: translate(0, -300px) rotate(-270deg);}
+            100% {transform: translate(-300px, 0) rotate(-360deg);}
+        }
+        @keyframes moveAndRotate3 {
+            /*oikea yläkulma*/
+            0% {top: 10%;
+                left: 70%; /*left: -300px; /* Kuva alkaa vasemmalta ulkopuolelta */
+                transform: translate(0, 0) rotate(0deg);/*transform: rotate(0deg); /*ei pyöri alussa*/}
+            25% {transform: translate(-200px, 250px) rotate(-90deg);}
+            50% {transform: translate(-300px, 400px) rotate(-180deg);}
+            75% {transform: translate(-100px, 125px) rotate(-270deg);}
+            100% {transform: translate(0, 0) rotate(-360deg);}
+        }
+        @keyframes moveAndRotate4 {
+            /*oikea alakulma*/
+            0% {top: 70%;
+                left: 70%; /*left: -300px; /* Kuva alkaa vasemmalta ulkopuolelta */
+                transform: translate(0, 0) rotate(45deg);/*transform: rotate(0deg); /*ei pyöri alussa*/}
+            25% {transform: translate(-300px, -100px) rotate(90deg);}
+            50% {transform: translate(-600px, -200px) rotate(180deg);}
+            75% {transform: translate(-300px, -100px) rotate(270deg);}
+            100% {transform: translate(0, 0) rotate(360deg);}
+        }
+
+        @keyframes blink {
+            0% {
+                background-color: black;
+                color: red;
+            }
+            100% {
+                background-color: red;
+                color: black;
+            }
+        }
+        @keyframes blink1 {
+            0% {opacity: 0;}
+            50% {opacity: 1;}
+            100% {opacity: 0;}
+        }
+
+        /*TAPAHTUMAT NAPIN PAINALLUKSEN JÄLKEEN*/
+        .move1 {
+            animation: moveAndRotate1 10s linear infinite;
+        }
+        .move2 {
+            animation: moveAndRotate2 10s linear infinite;
+        }
+        .move3 {
+            animation: moveAndRotate3 10s linear infinite;
+        }
+        .move4 {
+            animation: moveAndRotate4 10s linear infinite;
+        }
+
+
+        /*MUOTOILU*/
+        .ALL {
+            /*border: 1px solid blue;*/
+            display: flex;
+            justify-content: flex-end; /*jakaa tilan tasaisesti*/
+            align-items: center; /*kohdistaa pystysuunnassa*/
+            width: 85%;
+            gap: 100px;
         }
         .content {
+            /*border: 1px yellow;*/
             display: flex;
             flex-direction: column; /* Pystysuuntainen asettelu tekstille */
             align-items: center;
+            text-align: center;
+            width: 50%;
+            gap: 20px;
         }
         .right-image {
             width: 300px; /*Jorgen kuvan koko*/
             height: auto; /* Säilyttää kuvasuhteen */
-            margin-left: 8px; /*väli Jorgen kuvan ja tekstin välillä*/
-        }
-        figure {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            margin-bottom: 10px;
         }
         figcaption {
             margin-bottom: 10px; /* Väli kuvatekstin ja kuvan välillä */
             font-size: 2.0rem;
             color: black;
-            text-align: center;
         }
-        h1, p {
-            text-align: center;
-            white-space: pre-line;
-        }
-        p {
-            width: 20%;
+        h1 {
+            font-size: 2rem;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            z-index: 1; /*teksti pysyy päällimmäisenä*/
+            margin-top: -100px;
         }
         img {
-            max-width: 50%;
+            max-width: 100%;
             height: auto;
-            margin: 30px;
+            margin: 20px;
         }
+
+        /*FLASHING BUTTON*/
+        #flashingButton {
+            padding: 10px 20px;
+            background-color: red;
+            color: black;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+            animation: blink 0.5s infinite;
+            z-index: 1;
+        }
+
+        #flashingButton:hover {
+            background-color: grey;
+            animation: none;
+            z-index: 2;
+        }
+        #finalbosscontainer {
+            /*border: 1px solid red;*/
+            margin-left: auto;
+            margin-right: 50px;
+            display: flex; /* Asettaa sisällön rinnakkain */
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            max-width: 50%;
+        }
+        #finalbosscontainer p {
+            max-width: 35%; /* Tekee kappaleesta puolet kapeamman */
+            margin: 0 auto; /* Keskittää tekstin */
+            text-align: center; /* Varmistaa, että teksti näyttää tasapainoiselta */
+        }
+        .moving-images {
+            position: absolute; /* Asettaa säilöä varten */
+            width: 450px;
+            height: auto; /*säilyttää kuvasuhteen*/
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 300px;    
+        }
+        #jorgeteksti {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 4rem;
+            color: black;
+            font-weight: bold;
+            animation: blink 0.5s infinite;
+            z-index: 999;
+        }
+        #jorgetekstilove {
+            position: fixed;
+            text-align: center;
+            top: 75%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 2rem;
+            color: black;
+            animation: blink1 1.5s infinite;
+            z-index: 999;
+        }
+        #soundsonteksti {
+            position: fixed;
+            text-align: center;
+            top: 25%;
+            left: 25%;
+            rotate: (-45deg);
+            transform: translate(-50%, -50%) rotate(-40deg);
+            font-size: 2rem;
+            color: black;
+            font-weight: bold;
+            animation: blink1 1.5s infinite;
+            z-index: 999;
+        }
+
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="content">
+<div class="ALL">
+
+    <div id="jorgeteksti" class="hidden">JORGE!!!</div>
+    <div id="jorgetekstilove" class="hidden">YOU WILL ALWAYS STAY IN<br>KONECRANES FINLANDS HEART</div>
+    <div id="soundsonteksti" class="hidden">SOUNDS<br>ON!!</div>
+
+    <div class="content">
+
     <h1>ALL<br>GOOD<br>THINGS<br>COME<br>TO<br>AN<br>END</h1>
 
-    <img src="final_A.PNG">
-
-        <p>Hello,</p>
-        <p> 
-        I'm a site manager in PSA Sines container terminal.
-        My passion is red wine and bad jokes. Nurik makes me angry.
-        </p>
-
-        <p>
-        I am moving to Barcelona even though I miss my girlfriend a lot. 
-        This is new year new me. I have set at least one goal to me for this year:
-            I'm going to learn LiSA system and PLC programming.
-        </p>
+    <div class="moving-images">
+    <img src="final_A.PNG" class="moving-images" id="movingImg1" alt="Moving Image1">
+    <img src="final_A.PNG" class="moving-images" id="movingImg2" alt="Moving Image2">
+    <img src="final_A.PNG" class="moving-images" id="movingImg3" alt="Moving Image3">
+    <img src="final_A.PNG" class="moving-images" id="movingImg4" alt="Moving Image4">
     </div>
-    <figure>
-    <img src="jorge_basic.png" alt="FINAL BOSS" class="right-image">
+
+    <button id="flashingButton" onclick="toggleMovement()">SPIN THE TEAM!!!</button>
+    </div>
+
+    <div id="finalbosscontainer">
+
+    <img src="jorge_basic_pink.PNG" alt="FINAL BOSS" class="right-image">
+
     <figcaption>THE FINAL BOSS</figcaption>
+
+    <p>Hello,</p>
+    <p> 
+    I'm a site manager in PSA Sines container terminal.
+    My passion is red wine and bad jokes. Nurik makes me angry.
+    </p>
+
+    <p>
+    I am moving to Barcelona even though I miss my girlfriend a lot. 
+    This is new year new me. I have set at least two goal to me for this year:
+        I'm going to learn LiSA system and PLC programming.
+    </p>
     </div>
+</div>
+
+    <audio id="PSA Sines tune" src="el solinito.mp3" preload="auto"></audio>
+
+    <script>
+        //tila joka seuraa liikkuuko kuva vai ei
+        let isMoving = false;
+
+        function toggleMovement() {
+            const img1 = document.getElementById("movingImg1");
+            const img2 = document.getElementById("movingImg2");
+            const img3 = document.getElementById("movingImg3");
+            const img4 = document.getElementById("movingImg4");
+            const jorgeteksti = document.getElementById("jorgeteksti");
+            const jorgetekstilove = document.getElementById("jorgetekstilove");
+            const soundsonteksti = document.getElementById("soundsonteksti");
+
+            const button = document.getElementById("flashingButton");
+            const music = document.getElementById("PSA Sines tune");
+
+            const allContainer = document.querySelector("#finalbosscontainer");
+            const allContainer1 = document.querySelector("h1");
+            
+
+            if (isMoving) {
+                //pysäyte liike ja muuta napin teksti
+                img1.classList.remove("move1");
+                img2.classList.remove("move2");
+                img3.classList.remove("move3");
+                img4.classList.remove("move4");
+                button.textContent = "SPIN THE TEAM!!!";
+                button.style.animation = "blink 0.5s infinite";
+                music.pause(); //Pysäytä musiikki
+                music.currentTime = 0; //Nollaa musiikin aloitus
+                allContainer.classList.remove("hidden"); //Näytä tekstit uudelleen
+                allContainer1.style.display = "block";
+                jorgeteksti.classList.add("hidden");
+                jorgetekstilove.classList.add("hidden");
+                soundsonteksti.classList.add("hidden");
+            } else {
+                //Aloita liike ja muuta napin teksti
+                img1.classList.add("move1");
+                img2.classList.add("move2");
+                img3.classList.add("move3");
+                img4.classList.add("move4");
+                button.textContent = "Stop the Team";
+                button.style.animation = "none"; //poista vilkkuminen
+                music.play(); //toista musiikki
+                allContainer.classList.add("hidden"); //Piilota tekstit
+                allContainer1.style.display = "none";
+                jorgeteksti.classList.remove("hidden");
+                jorgetekstilove.classList.remove("hidden");
+                soundsonteksti.classList.remove("hidden");
+            }
+
+            //Käännä liikeen tila
+            isMoving = !isMoving
+        }
+    </script>
 
 </body>
 
